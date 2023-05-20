@@ -3,8 +3,7 @@ name: deploy-container
 # Watching a events push and change into the paths
 on:
   push:
-    branches:
-      - master
+    branches: ['main']
     paths:
       - 'packages/container/**'
 
