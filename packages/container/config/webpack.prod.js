@@ -18,7 +18,7 @@ const prodCofig = {
       remotes: {
         // looking remoteEntry with the name of marketing assuming inside /marketing
         // and using the url of the domain for production
-        marketing: `marketing@${domain}/marketing/remoteEntry.js`,
+        marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`,
       },
       shared: packageJson.dependencies,
     }),
