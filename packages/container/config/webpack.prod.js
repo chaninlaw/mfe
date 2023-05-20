@@ -10,6 +10,7 @@ const prodCofig = {
   output: {
     // for caching issues
     filename: '[name].[contenthash].js',
+    publicPath: '/container/latest/',
   },
   plugins: [
     new ModuleFederationPlugin({
