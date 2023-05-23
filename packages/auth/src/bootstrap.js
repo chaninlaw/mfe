@@ -4,20 +4,23 @@ import { createMemoryHistory, createBrowserHistory } from 'history';
 import App from './App';
 
 // Mount function to start up the app
-const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
+const mount = (el, { onNavigate, defaultHistory, initialPath, onSignIn }) => {
   // defaultHistory for development in isolation
+  // give initial state for memory history
   const history =
     defaultHistory ||
     createMemoryHistory({
       initialEntries: [initialPath],
     });
 
+  // listen for navigation and call onNavigate
   if (onNavigate) {
     history.listen(onNavigate);
   }
 
-  render(<App history={history} />, el);
+  render(<App onSignIn={onSignIn} history={history} />, el);
 
+  // return the history object to the container
   return {
     onParentNavigate({ pathname: nextPathname }) {
       const { pathname } = history.location;
@@ -30,7 +33,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
 
 // If we are in DEV mode and in Isolation, call mount immediately
 if (process.env.NODE_ENV === 'development') {
-  const devRoot = document.querySelector('#_marketing-dev-root');
+  const devRoot = document.querySelector('#_auth-dev-root');
 
   if (devRoot) {
     // defaultHistory for development in isolation
