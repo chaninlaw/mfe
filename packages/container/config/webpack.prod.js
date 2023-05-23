@@ -8,7 +8,7 @@ const domain = process.env.PRODUCTION_DOMAIN;
 const prodCofig = {
   mode: 'production',
   output: {
-    // for caching issues
+    // for file name caching issues
     filename: '[name].[contenthash].js',
     publicPath: '/container/latest/',
   },
@@ -19,6 +19,7 @@ const prodCofig = {
         // looking remoteEntry with the name of marketing assuming inside /marketing
         // and using the url of the domain for production
         marketing: `marketing@${domain}/marketing/latest/remoteEntry.js`,
+        auth: `auth@${domain}/auth/latest/remoteEntry.js`,
       },
       shared: packageJson.dependencies,
     }),
